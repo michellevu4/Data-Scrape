@@ -28,3 +28,7 @@ for i,tweet in enumerate(sntwitter.TwitterHashtagScraper('#DigCitWeek').get_item
 # Creating a dataframe from the tweets list above
 tweets_df = pd.DataFrame(attributes_container2, columns=["Date Created", "Location", "Longitude", "Latitude", "Like Count", "Retweet Count", "In Reply To", "User", "User Name", "User Description", "Follower Count", "Verified", "Tweets"])
 print(tweets_df)
+
+# export the dataframe to a csv file if desired
+mediaDF.to_csv("#MediaLitWeek.csv")
+digDF.to_csv("#DigCitWeek")
