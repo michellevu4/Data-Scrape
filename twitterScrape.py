@@ -2,33 +2,33 @@ import snscrape.modules.twitter as sntwitter
 import pandas as pd
 
 # Created a list to append all tweet attributes(data)
-attributes_container = []
+mediaLitWeek = []
 
 print("#MediaLitWeek")
 # Using TwitterSearchScraper to scrape data and append tweets to list
 for i,tweet in enumerate(sntwitter.TwitterHashtagScraper('#MediaLitWeek').get_items()):
     if i>10:
         break
-    attributes_container.append([tweet.date.date(), tweet.place, tweet.likeCount, tweet.retweetCount, tweet.inReplyToUser, tweet.user.username, tweet.user.displayname, tweet.user.rawDescription, tweet.user.followersCount, tweet.user.verified, tweet.content])
+    mediaLitWeek.append([tweet.date.date(), tweet.place, tweet.likeCount, tweet.retweetCount, tweet.inReplyToUser, tweet.user.username, tweet.user.displayname, tweet.user.rawDescription, tweet.user.followersCount, tweet.user.verified, tweet.content])
 
 # Creating a dataframe from the tweets list above
-tweets_df = pd.DataFrame(attributes_container, columns=["Date Created", "Location", "Like Count", "Retweet Count", "In Reply To", "User", "User Name", "User Description", "Follower Count", "Verified", "Tweets"])
-print(tweets_df)
+mediaDF = pd.DataFrame(mediaLitWeek, columns=["Date Created", "Location", "Like Count", "Retweet Count", "In Reply To", "User", "User Name", "User Description", "Follower Count", "Verified", "Tweets"])
+print(mediaDF)
 
 # Created a list to append all tweet attributes(data)
-attributes_container2 = []
+digCitWeek = []
 
 print("#DigCitWeek")
 # Using TwitterSearchScraper to scrape data and append tweets to list
 for i,tweet in enumerate(sntwitter.TwitterHashtagScraper('#DigCitWeek').get_items()):
     if i>10:
         break
-    attributes_container2.append([tweet.date.date(), tweet.place, tweet.likeCount, tweet.retweetCount, tweet.inReplyToUser, tweet.user.username, tweet.user.displayname, tweet.user.rawDescription, tweet.user.followersCount, tweet.user.verified, tweet.content])
+    digCitWeek.append([tweet.date.date(), tweet.place, tweet.likeCount, tweet.retweetCount, tweet.inReplyToUser, tweet.user.username, tweet.user.displayname, tweet.user.rawDescription, tweet.user.followersCount, tweet.user.verified, tweet.content])
 
 # Creating a dataframe from the tweets list above
-tweets_df = pd.DataFrame(attributes_container2, columns=["Date Created", "Location", "Like Count", "Retweet Count", "In Reply To", "User", "User Name", "User Description", "Follower Count", "Verified", "Tweets"])
-print(tweets_df)
+digDF = pd.DataFrame(digCitWeek, columns=["Date Created", "Location", "Like Count", "Retweet Count", "In Reply To", "User", "User Name", "User Description", "Follower Count", "Verified", "Tweets"])
+print(digDF)
 
 # export the dataframe to a csv file if desired
 mediaDF.to_csv("#MediaLitWeek.csv")
-digDF.to_csv("#DigCitWeek")
+digDF.to_csv("#DigCitWeek.csv")
